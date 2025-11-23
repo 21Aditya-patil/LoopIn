@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        'soft': '10px 10px 20px -10px rgba(0,0,0,0.2)'
+        'soft': '0 10px 20px -10px rgba(0,0,0,0.2)'
       }
     },
   },

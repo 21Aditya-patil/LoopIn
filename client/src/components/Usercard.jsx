@@ -1,6 +1,7 @@
 import React from 'react'
 import cover from '/cover.jpg'
 import dp from '/one.jpg'
+import { Link } from 'react-router-dom'
 
 function Usercard() {
   return (
@@ -30,7 +31,7 @@ function Usercard() {
         </div>
         <hr className='mx-6 border border-gray-400' />
       </div>
-      <a href="#" className='self-center font-bold text-[#ff9a3b] hover:text-[#fccc89] cursor-pointer'>My Profile</a>
+      <Link to="/account" className='self-center font-bold text-[#ff9a3b] hover:text-[#fccc89] cursor-pointer'>My Profile</Link>
     </div>
   )
 }
