@@ -4,7 +4,7 @@ import { notifications } from '../Data/notificationData'
 
 function TrendCard() {
   return (
-    <div className='flex flex-col gap-6 bg-[#ffffffa3] rounded-xl p-4 shadow-[#ff9a3b] shadow-soft'>
+    <div className='flex flex-col gap-6 dark:bg-gray-800 bg-[#ffffffa3] rounded-xl p-4 shadow-[#ff9a3b] dark:shadow-[#ff9a3b] dark:shadow-xsoft shadow-soft'>
       <div className='flex items-center gap-2 font-bold border-b border-[#ff9a3b] py-2'>
         <IoIosNotificationsOutline className='text-2xl hover:-translate-y-1 transition-all ease-in-out'/>
         Notfications

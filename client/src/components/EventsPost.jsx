@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function EventsPost({ event, openEvent }) {
   return (
-    <div className="w-full bg-[#ffffffa3] rounded-xl p-4 shadow-[#ff9a3b] shadow-soft flex flex-col gap-4 h-full">
+    <div className="w-full dark:bg-gray-800 bg-[#ffffffa3] rounded-xl p-4 dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft dark:shadow-xsoft flex flex-col gap-4 h-full">
       <div className="rounded-xl overflow-hidden">
         <img src={event.img} alt="Poster" className="w-full rounded-xl h-48 object-cover" />
       </div>

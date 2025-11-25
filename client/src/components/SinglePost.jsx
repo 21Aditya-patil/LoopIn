@@ -1,9 +1,9 @@
 import React from 'react'
-import { FaRegHeart, FaRegComment, FaRegBookmark   } from "react-icons/fa";
+import { FaRegHeart, FaRegComment, FaRegBookmark,FaShare  } from "react-icons/fa";
 
 function SinglePost({data}) {
   return (
-    <div className='flex flex-col p-4 bg-[#ffffffa3] shadow-[#ff9a3b] shadow-soft rounded-2xl gap-4'>
+    <div className='flex flex-col p-4 dark:bg-gray-800 bg-[#ffffffa3] shadow-[#ff9a3b] dark:shadow-[#ff9a3b] dark:shadow-xsoft shadow-soft rounded-2xl gap-4'>
       <div className='flex items-center pb-1 gap-2'>
         <img src={data.img} alt="dp" className="w-8 h-8 rounded-full"/>
         <h1 className='font-bold text-xl'>{data.name}</h1>
@@ -20,6 +20,10 @@ function SinglePost({data}) {
         </div>
         <div className='flex gap-1 items-center'>
             <FaRegBookmark />
+            45
+        </div>
+        <div className='flex gap-1 items-center'>
+            <FaShare />
             45
         </div>
       </div>

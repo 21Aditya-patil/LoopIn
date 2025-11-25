@@ -15,7 +15,7 @@ function Navbar() {
       <input
         type="text"
         placeholder="Search something..."
-        className="outline-none p-2 text-base rounded-xl bg-white border border-slate-300"
+        className="outline-none p-2 text-base rounded-xl dark:bg-gray-600 bg-white dark:border-none border border-slate-300"
       />
       <FaSearch className="text-[#ff9a3b] text-base hover:text-[#fccc89] cursor-pointer" />
     </div>
