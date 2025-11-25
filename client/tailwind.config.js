@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: "class", // VERY IMPORTANT
+export default {
+  darkMode: 'class',
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       boxShadow: {
-        soft: "0 4px 10px rgba(0,0,0,0.10)",
-        xsoft: "0 2px 20px rgba(0,0,0,0.05)",
-      },
+        'soft': '0 10px 20px -10px rgba(0,0,0,0.2)',
+        'xsoft': '0 5px 10px -8px rgba(0,0,0,0.2)'
+      }
     },
   },
   plugins: [],
-};
+}
