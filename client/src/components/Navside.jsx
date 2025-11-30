@@ -16,7 +16,7 @@ function Navside() {
           to="/"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-[#ffffffa3] dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gray-700" : null
             }`
           }
         >
@@ -26,7 +26,7 @@ function Navside() {
           to="/events"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-[#ffffffa3] dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gray-700" : null
             }`
           }
         >
@@ -37,7 +37,7 @@ function Navside() {
           to="/chats"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-[#ffffffa3] dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gray-700" : null
             }`
           }
         >
@@ -48,7 +48,7 @@ function Navside() {
           to="/account"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-[#ffffffa3] dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gray-700" : null
             }`
           }
         >
