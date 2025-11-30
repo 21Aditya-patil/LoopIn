@@ -1,7 +1,8 @@
 import React from "react";
-import logo from "/logo.png";
+import logo from "/another.svg";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 
 function Navbar() {
@@ -10,7 +11,18 @@ function Navbar() {
       <Link
         to="/"
       >
-        <img src={logo} alt="logo" className="h-10 w-10" />
+        <motion.img
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{
+          opacity: 1,
+          rotate: [0, 2, -2, 0],
+        }}
+        transition={{
+          duration: 1.2,
+          ease: "easeInOut",
+          rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
+        }} 
+        src={logo} alt="logo" />
       </Link>
       <input
         type="text"
@@ -23,3 +35,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
