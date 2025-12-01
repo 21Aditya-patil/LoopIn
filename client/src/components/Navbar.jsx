@@ -15,14 +15,14 @@ function Navbar() {
         initial={{ opacity: 0, scale: 1 }}
         animate={{
           opacity: 1,
-          rotate: [0, 2, -2, 0],
+          rotate: [0, 4, -4, 0],
         }}
         transition={{
           duration: 1.2,
           ease: "easeInOut",
           rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
         }} 
-        src={logo} alt="logo" />
+        src={logo} alt="logo" className="w-14"/>
       </Link>
       <input
         type="text"
