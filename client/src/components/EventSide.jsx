@@ -9,7 +9,7 @@ function EventSide() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className="grid grid-cols-1 md:grid-cols-2 flex-col h-screen overflow-y-auto gap-4 pb-24 lg:pb-8 pt-[80px] lg:pt-0"
+      className="grid grid-cols-1 md:grid-cols-2 flex-col h-screen overflow-y-auto gap-4 pb-32 lg:pb-8 pt-[80px] lg:pt-0"
     >
       {events.map((event) => {
         return <EventsPost key={event.id} event={event} />;

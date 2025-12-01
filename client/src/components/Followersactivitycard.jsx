@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { followers } from "../Data/followersData";
 
 function Followersactivitycard() {
+
+  const [follow, setFollow] = useState(true)
+
+  const toggleFol = () => {
+    if(follow === true)
+      setFollow(false)
+    else
+      setFollow(true)
+  }
+
   return (
     <div className="w-full rounded-xl flex flex-col text-sm gap-4">
       <h4>Who is following you?</h4>
@@ -19,7 +29,11 @@ function Followersactivitycard() {
               <span>{follower.username}</span>
             </div>
           </div>
-          <button className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-4 py-1 hover:-translate-x-1 hover:bg-[#faad64] ease-in-out transition-all">Follow</button>
+          <button
+          onClick={toggleFol}
+           className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-4 py-1 hover:-translate-x-1 hover:bg-[#faad64] ease-in-out transition-all">
+            {follow ? "Follow" : "Unfollow"}
+           </button>
         </div>
       ))}
     </div>
