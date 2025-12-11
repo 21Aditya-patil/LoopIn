@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import EventModel from "./EventModel";
+import { motion } from "motion/react";
 
 function EventsPost({ event, openEvent }) {
+  const [showModel, setShowModel] = useState(false)
   return (
     <div className="w-full dark:bg-gray-800 bg-[#ffffffa3] rounded-xl p-4 dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft dark:shadow-xsoft flex flex-col gap-4 h-full">
       <div className="rounded-xl overflow-hidden">
@@ -11,12 +14,18 @@ function EventsPost({ event, openEvent }) {
         <p className="text-sm flex-1">{event.desc}</p>
         <span className="text-slate-400 text-sm">{event.created}</span>
       </div>
-      <button
-        className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-lg font-bold px-6 py-2 hover:-translate-y-1 hover:bg-[#faad64] ease-in-out transition-all text-lg w-full"
-        onClick={openEvent}
+      <motion.button
+      whileHover={{
+              scale: 0.9,
+              transition: { duration: 0.2 },
+            }}
+            transition={{ duration: 0.5 }}
+        className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-lg font-bold px-6 py-2 hover:bg-[#faad64] text-lg w-full"
+        onClick={() => setShowModel(true)}
       >
         View more
-      </button>
+      </motion.button>
+      {showModel && <EventModel event={event} close={() => setShowModel(false)}/> }
     </div>
   );
 }
