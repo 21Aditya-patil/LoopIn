@@ -19,7 +19,7 @@ function EventsPost({ event, openEvent }) {
               scale: 0.9,
               transition: { duration: 0.2 },
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
         className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-lg font-bold px-6 py-2 hover:bg-[#faad64] text-lg w-full"
         onClick={() => setShowModel(true)}
       >

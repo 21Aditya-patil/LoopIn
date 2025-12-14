@@ -11,11 +11,11 @@ import {
 
 function EventModel({ close, event }) {
   return (
-    <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg -[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+    <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg-[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
         className="m-1 h-[650px] w-full lg:w-[650px] bg-white dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft dark:shadow-xsoft dark:bg-gray-800 rounded-xl p-4 flex flex-col gap-4 justify-center"
       >
         <div className="flex justify-between text-2xl items-center border-b border-slate-500">

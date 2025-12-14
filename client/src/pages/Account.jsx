@@ -3,6 +3,7 @@ import Userside from '../components/Userside'
 import Navside from '../components/Navside'
 import MobileNav from '../components/MobileNav'
 import Accountside from "../components/Accountside";
+import AccountLeft from "../components/AccountLeft";
 
 function Account() {
   return (
