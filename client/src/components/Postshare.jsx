@@ -28,10 +28,8 @@ function Postshare() {
           <motion.button
             whileHover={{
               scale: 0.9,
-              // Will be used when gesture starts
               transition: { duration: 0.2 },
             }}
-            // Will be used when gesture ends
             transition={{ duration: 0.5 }}
             className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-6 py-0 hover:bg-[#faad64]"
           >

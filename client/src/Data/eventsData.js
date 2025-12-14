@@ -11,69 +11,150 @@ export const events = [
     img: hack, 
     title: "Hackathon", 
     desc: "A 24-hour inter-department coding marathon where students collaborate to build innovative tech solutions and compete to solve real-world problems.",
-    created: "2025-01-12 10:45 AM"
+    created: "2025-01-12 10:45 AM",
+
+    organizerDetails: "Computer Science Department",
+    venue: "Main Auditorium",
+    contact: "Prof. R. Sharma (+91 98765 43210)",
+    howToRegister: "Register using the official college portal or contact the event coordinator.",
+    likes: 120,
+    shares: 40,
+    saved: false,
   },
   { 
     id: 2, 
     img: sport, 
     title: "Sports Week", 
     desc: "An energetic week filled with cricket, football, volleyball, track races, and other athletic activities that encourage teamwork and sportsmanship.",
-    created: "2025-01-12 11:10 AM"
+    created: "2025-01-12 11:10 AM",
+
+    organizerDetails: "Sports Department",
+    venue: "College Ground",
+    contact: "Mr. P. Kamat (+91 91234 56780)",
+    howToRegister: "Registration at the sports office between 10 AM – 1 PM.",
+    likes: 250,
+    shares: 60,
+    saved: false,
   },
   { 
     id: 3, 
     img: annual, 
     title: "Annual Day", 
     desc: "A grand cultural event featuring dance, music, drama, awards, and guest performances that celebrate the achievements of the academic year.",
-    created: "2025-01-12 12:02 PM"
+    created: "2025-01-12 12:02 PM",
+
+    organizerDetails: "Cultural Committee",
+    venue: "Open Air Theatre",
+    contact: "Dr. Meena Joshi (+91 90012 34567)",
+    howToRegister: "Direct entry—no registration required.",
+    likes: 310,
+    shares: 85,
+    saved: false,
   },
   { 
     id: 4, 
     img: traditional, 
     title: "Traditional Day", 
     desc: "Students come dressed in colorful traditional attire, participate in cultural showcases, photoshoots, and enjoy activities that celebrate Indian heritage.",
-    created: "2025-01-12 12:30 PM"
+    created: "2025-01-12 12:30 PM",
+
+    organizerDetails: "Cultural Committee",
+    venue: "Central Campus",
+    contact: "Dr. Aditi Nair (+91 99887 66554)",
+    howToRegister: "No registration needed—open for all students.",
+    likes: 180,
+    shares: 50,
+    saved: false,
   },
   { 
     id: 5, 
     img: tech, 
     title: "Tech Expo", 
     desc: "A display of innovative models, AI demos, engineering prototypes, and creative tech projects developed by students across various departments.",
-    created: "2025-01-12 01:15 PM"
+    created: "2025-01-12 01:15 PM",
+
+    organizerDetails: "Innovation & Research Club",
+    venue: "IT Building Exhibition Hall",
+    contact: "Prof. Vivek Patwardhan (+91 90909 87654)",
+    howToRegister: "Teams must submit project abstracts through the college website.",
+    likes: 270,
+    shares: 95,
+    saved: false,
   },
   { 
     id: 6, 
     img: poster, 
     title: "Tie Day", 
     desc: "A fun theme day where students dress formally, socialize, and participate in professional photoshoots designed to give a corporate-like experience.",
-    created: "2025-01-12 01:55 PM"
+    created: "2025-01-12 01:55 PM",
+
+    organizerDetails: "Management Department",
+    venue: "College Lobby",
+    contact: "Prof. Sanjay Kulkarni (+91 93456 78901)",
+    howToRegister: "Open event—no registration required.",
+    likes: 90,
+    shares: 20,
+    saved: false,
   },
   { 
     id: 7, 
     img: poster, 
     title: "Farewell", 
     desc: "A warm and emotional farewell event dedicated to final-year students featuring speeches, performances, awards, and heartfelt memories.",
-    created: "2025-01-12 02:20 PM"
+    created: "2025-01-12 02:20 PM",
+
+    organizerDetails: "Students Council",
+    venue: "Main Auditorium",
+    contact: "Dr. Neha Deshpande (+91 97654 32109)",
+    howToRegister: "Final-year students will receive entry passes via email.",
+    likes: 410,
+   shares: 120,
+    saved: false,
   },
   { 
     id: 8, 
     img: poster, 
     title: "Freshers Party", 
     desc: "A welcoming celebration for new students with music, games, performances, and interactions to help them feel comfortable and connected.",
-    created: "2025-01-12 02:50 PM"
+    created: "2025-01-12 02:50 PM",
+
+    organizerDetails: "Students Council",
+    venue: "College Banquet Hall",
+    contact: "Prof. Komal Sawant (+91 94567 32190)",
+    howToRegister: "First-year students must register using the QR code shared on notice boards.",
+    likes: 350,
+    shares: 110,
+    saved: false,
   },
   { 
     id: 9, 
     img: poster, 
     title: "Debate Competition", 
     desc: "An intellectual competition where students argue on trending social and technical topics, improving their public speaking and critical thinking.",
-    created: "2025-01-12 03:20 PM"
+    created: "2025-01-12 03:20 PM",
+
+    organizerDetails: "Literary Club",
+    venue: "Seminar Hall – Block B",
+    contact: "Dr. Kavita Rao (+91 92345 98760)",
+    howToRegister: "Submit names to the Literary Club office or message the coordinator.",
+    likes: 160,
+    shares: 35,
+    saved: false,
   },
   { 
     id: 10, 
     img: poster, 
     title: "Music Night", 
     desc: "A vibrant evening filled with singing, band performances, beatboxing, and open-mic segments highlighting musical talent across the campus.",
-    created: "2025-01-12 03:55 PM"
+    created: "2025-01-12 03:55 PM",
+
+    organizerDetails: "Music Club",
+    venue: "Open Air Stage",
+    contact: "Mr. Rajan Kulkarni (+91 93412 55678)",
+    howToRegister: "Register at the Music Club desk or using the student portal.",
+    likes: 290,
+    shares: 75,
+    saved: false,
   },
-]
+];
+

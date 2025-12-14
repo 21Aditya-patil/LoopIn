@@ -3,6 +3,7 @@ import EventsPost from "./EventsPost";
 import { events } from "../Data/eventsData";
 import { motion } from "motion/react";
 
+
 function EventSide() {
   return (
     <motion.div
@@ -14,6 +15,7 @@ function EventSide() {
       {events.map((event) => {
         return <EventsPost key={event.id} event={event} />;
       })}
+      
     </motion.div>
   );
 }

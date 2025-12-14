@@ -2,6 +2,8 @@ import React from "react";
 import Postshare from "./Postshare";
 import MultiPosts from "./MultiPosts";
 import { motion } from "motion/react";
+import { NavLink } from "react-router-dom";
+import PostCategories from "./PostCategories";
 
 function Postside() {
   return (
@@ -12,6 +14,7 @@ function Postside() {
       className="flex flex-col max-h-screen overflow-y-auto gap-4 pb-24 lg:pb-8 pt-[80px] lg:pt-0"
     >
       <Postshare />
+      <PostCategories />
       <MultiPosts />
     </motion.div>
   );
