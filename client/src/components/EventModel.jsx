@@ -11,7 +11,7 @@ import {
 
 function EventModel({ close, event }) {
   return (
-    <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg -[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+    <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg-[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
