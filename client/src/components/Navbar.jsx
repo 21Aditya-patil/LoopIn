@@ -9,19 +9,17 @@ function Navbar() {
     <div className="flex gap-2 items-center">
       <Link to="/">
         <motion.img
-          initial={{ opacity: 0, scale:0.6 }}
-          animate={{
-            opacity: 1,
-            rotate: [0, 2, -2, 0],
-          }}
-          transition={{
-            duration: 1.2,
-            ease: "easeInOut",
-            rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
-          }}
-          src={logo}
-          alt="logo"
-        />
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{
+          opacity: 1,
+          rotate: [0, 2, -2, 0],
+        }}
+        transition={{
+          duration: 1.2,
+          ease: "easeInOut",
+          rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
+        }} 
+        src={logo} alt="logo" />
       </Link>
       <div className="relative">
         <input
