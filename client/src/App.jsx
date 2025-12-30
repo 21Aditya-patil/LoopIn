@@ -23,7 +23,7 @@ function App() {
     <>
       {loading ? <Loading /> : 
       <div
-       className="p-4 dark:bg-[#121212] bg-[#f3f3f3] overflow-hidden min-h-screen dark:text-white">
+       className="p-4 dark:bg-[#121212] bg-[#f3f3f3] overflow-hidden h-screen dark:text-white">
         <motion.div className="hidden md:block absolute w-80 h-56 bg-gradient-to-br from-[#ff9a3b] to-[#fccc89] dark:opacity-55 rounded-[50%] blur-3xl top-[70%] -right-32"
         animate={{
           y: [0, -150, 0],

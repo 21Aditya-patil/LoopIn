@@ -4,7 +4,7 @@ import one from "/one.jpg";
 
 function AccountCard() {
   return (
-    <div className="w-full rounded-2xl border border-slate-600 bg-[#1f2937] overflow-hidden shadow-xl h-[4000px]">
+    <div className="w-full rounded-2xl border border-slate-600 bg-[#1f2937] overflow-hidden shadow-xl">
       {/* Cover */}
       <div className="relative h-[360px] w-full">
         <img src={cover} alt="cover" className="w-full h-full object-cover" />

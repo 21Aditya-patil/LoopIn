@@ -17,9 +17,9 @@ function MobileNav() {
   return (
     <>
       {/* Top Navbar */}
-      <div className="lg:hidden flex justify-between items-center top-0 left-0 right-0 p-4 w-full dark:bg-slate-900 bg-white fixed z-50 rounded-b-xl md:shadow-lg shadow-soft shadow-[#ff9a3b] dark:shadow-[#ff9a3b] dark:shadow-xsoft h-18">
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-16 px-4 flex items-center justify-between bg-white dark:bg-slate-900 z-50 shadow-lg">
         <Link to="/">
-          <img src={logo} alt="logo" className="h-14 w-auto" />
+          <img src={logo} alt="logo" className="h-12 w-auto" />
         </Link>
 
         <div className="flex gap-5 items-center">
@@ -38,37 +38,37 @@ function MobileNav() {
       </div>
 
       {/* Bottom Navbar */}
-      <div className="lg:hidden flex text-3xl items-center justify-between bottom-0 left-0 right-0 p-4 dark:bg-gray-900 bg-white fixed z-50 rounded-t-xl shadow-lg shadow-[#ff9a3b] text-[#EF5757]">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 h-20 px-4 flex items-center justify-between bg-white dark:bg-gray-900 z-50 rounded-t-xl shadow-lg text-[#EF5757]">
         <NavLink to="/" className={({ isActive }) =>
-          `cursor-pointer py-2 px-4 rounded-xl ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : ""
+          `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
           }`
         }>
-          <GoHome />
+          <GoHome className="text-2xl" />
         </NavLink>
 
         <NavLink to="/events" className={({ isActive }) =>
-          `cursor-pointer py-2 px-4 rounded-xl ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : ""
+          `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
           }`
         }>
-          <GoCalendar />
+          <GoCalendar className="text-2xl" />
         </NavLink>
 
         <NavLink to="/chats" className={({ isActive }) =>
-          `cursor-pointer py-2 px-4 rounded-xl ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : ""
+          `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
           }`
         }>
-          <CiChat1 />
+          <CiChat1 className="text-2xl" />
         </NavLink>
 
         <NavLink to="/account" className={({ isActive }) =>
-          `cursor-pointer py-2 px-4 rounded-xl ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : ""
+          `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
           }`
         }>
-          <BsPersonCircle />
+          <BsPersonCircle className="text-2xl" />
         </NavLink>
       </div>
 
@@ -76,6 +76,8 @@ function MobileNav() {
       {showNoti && (
         <Notifications close={() => setShowNoti(false)} />
       )}
+
+
     </>
   );
 }

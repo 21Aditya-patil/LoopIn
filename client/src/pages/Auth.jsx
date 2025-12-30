@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import logo from "/another.svg";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { useTheme } from "../context/ThemeContext";
 
 function Auth() {
     const [isLogin, setIsLogin] = useState(true)
+    const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="relative max-h-screen w-full md:h-screen flex md:flex-row flex-col gap-5 justify-center items-center">
-      <div className="overflow-hidden flex justify-center items-center">
+    <div className="relative max-h-screen w-full md:h-screen flex flex-col gap-10">
+      <div
+          onClick={toggleTheme}
+          className="cursor-pointer text-[#EF5757] hover:text-[#ff9a3b] transition-all ease-in-out flex justify-end items-center text-2xl"
+        >
+          {theme === "light" ? <MdDarkMode /> : <MdLightMode />}
+        </div>
+      <div className="flex md:flex-row flex-col gap-5 justify-center items-center md:mt-40">
+        <div className="overflow-hidden flex justify-center items-center">
         <motion.img
           initial={{ opacity: 0 }}
           animate={{
@@ -23,6 +33,23 @@ function Auth() {
           alt="logo"
           className="md:w-96 w-40 h-40"
         />
+        <motion.div
+        className="absolute w-60 h-60 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0,255,255,0.6) 0%, rgba(0,255,255,0.1) 50%, rgba(0,255,255,0) 70%)",
+          filter: "blur(30px)",
+        }}
+        animate={{
+          scale: 0.9,
+          opacity: [0.4, 0.5, 0.4],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
       </div>
       <div className="w-full md:w-[450px] h-[550px] dark:bg-gray-800 bg-[#ffffffa3] rounded-2xl">
         <div className="w-full h-full flex flex-col justify-center px-10">
@@ -102,6 +129,7 @@ function Auth() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
