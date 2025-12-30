@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { FaRegHeart, FaRegBookmark, FaShare } from "react-icons/fa";
 import { motion } from "motion/react";
@@ -10,6 +10,7 @@ import {
 } from "react-icons/md";
 
 function EventModel({ close, event }) {
+  const link = 'https://docs.google.com/forms/d/e/1FAIpQLScKbm1ho3hCHVRklGTvyKxE3nuU1PO3nBgDCKJ1CC8xvDy-XA/viewform?usp=header'
   return (
     <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg-[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
       <motion.div
@@ -65,18 +66,34 @@ function EventModel({ close, event }) {
             <span>{event.howToRegister}</span>
           </div>
         </div>
-        <div className="bottom-0 flex gap-6 items-center border-t border-slate-500 ">
-          <div className="flex gap-1 items-center mt-2">
-            <FaRegHeart />
-            <span>{event.likes}</span>
+        <div className="bottom-0 flex gap-6 items-center border-t border-slate-500 justify-between">
+          <div className="flex justify-start items-center mt-2 gap-6">
+            <div className="flex gap-1 items-center">
+              <FaRegHeart />
+              <span>{event.likes}</span>
+            </div>
+            <div className="flex gap-1 items-center">
+              <FaShare />
+              <span>{event.shares}</span>
+            </div>
+            <div className="flex gap-1 items-center">
+              <FaRegBookmark />
+              <span>{event.saved}</span>
+            </div>
           </div>
-          <div className="flex gap-1 items-center mt-2">
-            <FaShare />
-            <span>{event.shares}</span>
-          </div>
-          <div className="flex gap-1 items-center mt-2">
-            <FaRegBookmark />
-            <span>{event.saved}</span>
+          <div className="mt-2">
+            <motion.button
+              whileHover={{
+                scale: 0.9,
+                transition: { duration: 0.2 },
+              }}
+              transition={{ duration: 0.5 }}
+
+              className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-6 py-1 over:bg-[#faad64]"
+            >
+              <a href={link}>Participate</a>
+
+            </motion.button>
           </div>
         </div>
       </motion.div>

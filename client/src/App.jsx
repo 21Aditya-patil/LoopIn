@@ -34,7 +34,7 @@ function App() {
           ease: "easeInOut",
         }}
         ></motion.div>
-        <motion.div className="absolute w-80 h-56 bg-gradient-to-br from-[#ff9a3b] to-[#fccc89] dark:opacity-45 rounded-[50%] blur-3xl top-[36%] -left-32"
+        <motion.div className="absolute w-80 h-56 bg-gradient-to-br from-[#f9a225] to-[#fccc89] dark:opacity-45 rounded-[50%] blur-3xl top-[36%] -left-32"
         animate={{
           y: [0, -150, 0],
           

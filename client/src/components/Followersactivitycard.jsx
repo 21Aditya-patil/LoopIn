@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { followers } from "../Data/followersData";
+import { motion } from "motion/react";
 
 function Followersactivitycard() {
 
-  const [follow, setFollow] = useState(true)
+  const [followStates, setFollowStates] = useState(
+    followers.reduce((acc, _, id) => ({ ...acc, [id]: true }), {})
+  )
 
-  const toggleFol = () => {
-    if(follow === true)
-      setFollow(false)
-    else
-      setFollow(true)
+  const toggleFol = (id) => {
+    setFollowStates(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }))
   }
 
   return (
@@ -29,11 +32,17 @@ function Followersactivitycard() {
               <span>{follower.username}</span>
             </div>
           </div>
-          <button
-          onClick={toggleFol}
-           className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-4 py-1 hover:-translate-x-1 hover:bg-[#faad64] ease-in-out transition-all">
-            {follow ? "Follow" : "Unfollow"}
-           </button>
+          <motion.button
+            whileHover={{
+              scale: 0.9,
+              transition: { duration: 0.2 },
+            }}
+            transition={{ duration: 0.5 }}
+            onClick={() => toggleFol(id)}
+            className={`px-4 py-1 rounded-full font-semibold ${followStates[id] ? 'bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white' : 'bg-gray-300 text-black'} `}>
+            {followStates[id] ? "Follow" : "Unfollow"}
+
+          </motion.button>
         </div>
       ))}
     </div>
