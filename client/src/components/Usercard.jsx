@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Usercard() {
   return (
-    <div className='flex flex-col w-full rounded-2xl border dark:border-gray-600 border-gray-200 relative gap-4 dark:bg-gray-800 bg-[#ffffffa3] p-2 pb-2 shadow-[#ff9a3b] dark:shadow-xsoft shadow-soft'>
+    <div className='flex flex-col w-full rounded-2xl border dark:border-gray-600 border-gray-200 relative gap-4 dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 bg-[#ffffffa3] p-2 pb-2 shadow-[#ff9a3b] dark:shadow-xsoft shadow-soft'>
       <div className='relative flex flex-col justify-center items-center'>
         <img src={cover} alt="bg" className='w-full object-cover rounded-xl'/>
         <img src={dp} alt="dp" className='absolute w-24 rounded-full -bottom-12 shadow-lg shadow-gray-900 hover:-translate-y-2 transition-all ease-in-out cursor-pointer object-cover'/>

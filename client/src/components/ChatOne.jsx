@@ -2,7 +2,7 @@ import React from "react";
 
 function ChatOne({ data }) {
   return (
-    <div className="w-full bg-[#ffffffa3] dark:bg-gray-800 rounded-lg min-h-16 border-b border-slate-300 dark:border-gray-600 p-2 flex items-start gap-3 mb-1 cursor-pointer hover:bg-slate-200 dark:hover:bg-gray-700">
+    <div className="w-full bg-[#ffffffa3] dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 rounded-lg min-h-16 border-b border-slate-900 dark:border-gray-600 p-2 flex items-start gap-3 mb-1 cursor-pointer hover:bg-slate-200 dark:hover:bg-gray-700">
       <img
         src={data.profile}
         alt="dp"

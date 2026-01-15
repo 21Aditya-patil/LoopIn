@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 function Postshare() {
   return (
-    <div className="flex gap-4 dark:bg-gray-800 bg-[#ffffffa3] p-4 rounded-2xl dark:shadow-xsoft dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft">
+    <div className="flex gap-4 dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 bg-[#ffffffa3] p-4 rounded-2xl dark:shadow-xsoft dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft">
       <img src={dp} alt="dp5" className="w-10 h-10 rounded-full" />
       <div className="flex w-full flex-col">
         <input
@@ -31,7 +31,7 @@ function Postshare() {
               transition: { duration: 0.2 },
             }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-6 py-0 hover:bg-[#faad64]"
+            className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-xl font-bold px-6 py-0 hover:bg-[#faad64]"
           >
             Post
           </motion.button>

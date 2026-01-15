@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-function PostCategories() {
-  const [active, setActive] = useState("All");
-
+function PostCategories({ active, setActive }) {
   const categories = ["All", "Sports", "Cultural", "Study", "Fun"];
 
   return (
     <div className="w-full overflow-x-auto shrink-0">
-      <div className="flex gap-3 whitespace-nowrap">
+      <div className="flex gap-3 whitespace-nowrap justify-evenly">
         {categories.map((i) => (
           <button
             key={i}
