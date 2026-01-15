@@ -9,7 +9,7 @@ function SinglePost({data}) {
         <h1 className='font-bold text-xl'>{data.name}</h1>
       </div>
       {data.desc}
-      <img src={data.img} alt="image" className='w-full rounded-xl max-h-80 object-cover' />
+      <img src={data.img} alt="image" className='w-full rounded-xl aspect-video object-cover' />
       <div className='flex gap-4 items-center'>
         <div className='flex gap-1 items-center'>
             <FaRegHeart />{data.likes}
