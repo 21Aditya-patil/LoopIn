@@ -1,12 +1,14 @@
 
 html {
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
+  min-height: 100%;
   transition: background-color 0.9s ease, color 0.9s ease;
 }
 
 body{
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 * {

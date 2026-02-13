@@ -13,7 +13,7 @@ function Postside({ withScroll = false }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className={`flex flex-col gap-4 pb-32 pt-16 lg:pt-0 lg:pb-10 ${withScroll ? 'h-full overflow-y-auto' : ''}`}
+      className={`flex flex-col gap-4 pb-32 pt-16 lg:pt-0 lg:pb-10 ${withScroll ? 'h-screen overflow-y-auto' : ''}`}
     >
       <Postshare />
       <PostCategories active={activeCategory} setActive={setActiveCategory} />

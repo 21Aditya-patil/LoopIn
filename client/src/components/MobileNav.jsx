@@ -41,7 +41,7 @@ function MobileNav() {
       <div className="lg:hidden fixed bottom-0 left-0 right-0 h-20 px-4 flex items-center justify-between bg-white dark:bg-gray-900 z-50 rounded-t-xl shadow-lg text-[#EF5757]">
         <NavLink to="/" className={({ isActive }) =>
           `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : "text-gray-400"
           }`
         }>
           <GoHome className="text-2xl" />
@@ -49,7 +49,7 @@ function MobileNav() {
 
         <NavLink to="/events" className={({ isActive }) =>
           `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : "text-gray-400"
           }`
         }>
           <GoCalendar className="text-2xl" />
@@ -57,7 +57,7 @@ function MobileNav() {
 
         <NavLink to="/chats" className={({ isActive }) =>
           `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : "text-gray-400"
           }`
         }>
           <CiChat1 className="text-2xl" />
@@ -65,7 +65,7 @@ function MobileNav() {
 
         <NavLink to="/account" className={({ isActive }) =>
           `cursor-pointer p-3 rounded-xl transition-colors duration-200 ${
-            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gray-700" : "text-gray-400"
+            isActive ? "text-[#EF5757] bg-slate-100 dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : "text-gray-400"
           }`
         }>
           <BsPersonCircle className="text-2xl" />

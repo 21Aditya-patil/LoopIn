@@ -6,7 +6,7 @@ import MobileNav from '../components/MobileNav'
 
 function Home() {
   return (
-    <div className='relative lg:grid lg:grid-cols-[18rem_auto_20rem] gap-4 h-screen items-stretch'>
+    <div className='relative lg:grid lg:grid-cols-[18rem_auto_20rem] gap-4 min-h-screen items-stretch'>
       <Userside />
       <MobileNav />
       <Postside withScroll={true} />

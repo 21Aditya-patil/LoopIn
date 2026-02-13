@@ -13,10 +13,10 @@ function Navside() {
     <div className="hidden lg:flex flex-col gap-8">
       <div className="flex text-3xl items-center justify-between">
         <NavLink
-          to="/"
+          to="/home"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-white dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : null
             }`
           }
         >
@@ -26,7 +26,7 @@ function Navside() {
           to="/events"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-white dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : null
             }`
           }
         >
@@ -37,7 +37,7 @@ function Navside() {
           to="/chats"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-white dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : null
             }`
           }
         >
@@ -48,7 +48,7 @@ function Navside() {
           to="/account"
           className={({ isActive }) =>
             `cursor-pointer py-2 px-4 rounded-2xl text-text-[#EF5757] text-[#EF5757] ${
-              isActive ? "bg-white dark:bg-gray-700" : null
+              isActive ? "bg-white dark:bg-gradient-to-br from-slate-800 via-slate-700 to-neutral-900" : null
             }`
           }
         >
