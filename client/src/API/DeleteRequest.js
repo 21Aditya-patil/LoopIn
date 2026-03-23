@@ -1,6 +1,8 @@
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 export const deleteUser = async (userId, data) => {
   const response = await fetch(
-    `http://localhost:8000/user/${userId}`,
+    `${BASE_URL}/user/${userId}`,
     {
       method: "DELETE",
       headers: {

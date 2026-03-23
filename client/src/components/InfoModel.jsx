@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../reducers/authSlice";
 
 function InfoModel({ modelClose }) {
+  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
@@ -38,7 +40,7 @@ function InfoModel({ modelClose }) {
       }
 
       try {
-        const uploadRes = await fetch("http://localhost:8000/upload/users", {
+        const uploadRes = await fetch(`${BASE_URL}/upload/users`, {
           method: "POST",
           body: imageFormData,
         });

@@ -5,6 +5,7 @@ import { followUserThunk } from "../reducers/userSlice";
 import dp from "/default-avatar.jpg";
 
 function Followersactivitycard() {
+  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ function Followersactivitycard() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:8000/user/suggestions/${user._id}`
+        `${BASE_URL}/user/suggestions/${user._id}`
       );
 
       const data = await res.json();

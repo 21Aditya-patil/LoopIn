@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as ChatApi from "../API/ChatRequest";
 import toast from "react-hot-toast";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const initialState = {
   currentChat: null,
@@ -13,7 +14,7 @@ const initialState = {
 export const fetchConversations = createAsyncThunk(
   "chat/fetchConversations",
   async (userId) => {
-    const res = await fetch(`http://localhost:8000/conversation/${userId}`);
+    const res = await fetch(`${BASE_URL}/conversation/${userId}`);
     return await res.json();
   },
 );
@@ -46,7 +47,7 @@ export const sendMessage = createAsyncThunk(
 export const deleteConversation = createAsyncThunk(
   "chat/deleteConversation",
   async (conversationId) => {
-    await fetch(`http://localhost:8000/conversation/${conversationId}`, {
+    await fetch(`${BASE_URL}/conversation/${conversationId}`, {
       method: "DELETE",
     });
     return conversationId;
