@@ -1,103 +1,66 @@
-import React, { useState } from "react";
-import { IoIosClose } from "react-icons/io";
-import { FaRegHeart, FaRegBookmark, FaShare } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { motion } from "motion/react";
-import {
-  MdGroups,
-  MdLocationOn,
-  MdPhone,
-  MdAppRegistration,
-} from "react-icons/md";
+import { IoIosClose } from "react-icons/io";
 
-function EventModel({ close, event }) {
-  const link = 'https://docs.google.com/forms/d/e/1FAIpQLScKbm1ho3hCHVRklGTvyKxE3nuU1PO3nBgDCKJ1CC8xvDy-XA/viewform?usp=header'
+function EventModel({ eventId, close }) {
+  const events = useSelector((state) => state.events.events);
+  const event = events.find((e) => e._id === eventId);
+
+  // ESC close + lock scroll
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") close();
+    };
+
+    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "auto";
+    };
+  }, [close]);
+
+  if (!event) return null;
+
   return (
-    <div className="fixed inset-0 bg-[#ffffffa3] dark:text-white dark:bg-[#00000080] bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-center items-center p-2"
+      onClick={close}
+    >
       <motion.div
-        initial={{ scale: 0 }}
+        initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 0.1, ease: "easeInOut" }}
-        className="m-1 h-[650px] w-full lg:w-[650px] bg-white dark:shadow-[#ff9a3b] shadow-[#ff9a3b] shadow-soft dark:shadow-xsoft dark:bg-gray-800 rounded-xl p-4 flex flex-col gap-4 justify-center"
+        exit={{ scale: 0.8 }}
+        transition={{ duration: 0.2 }}
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-[650px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-2xl"
       >
-        <div className="flex justify-between text-2xl items-center border-b border-slate-500">
-          <span>{event.title}</span>
+        <div className="flex justify-between items-center border-b pb-2">
+          <h2 className="font-bold text-lg">{event.title}</h2>
           <IoIosClose
             onClick={close}
-            className="cursor-pointer hover:bg-slate-600 rounded-full text-3xl"
+            className="text-3xl cursor-pointer"
           />
         </div>
-        <div className="rounded-xl overflow-hidden">
-          <img
-            src={event.img}
-            alt="Poster"
-            className="w-full rounded-xl h-44 object-cover"
-          />
-        </div>
-        <div className="flex flex-col gap-2 overflow-y-auto">
-          <div>
-            <p className="text-lg">{event.desc}</p>
-          </div>
-          <div>
-            <div className="flex items-center gap-1">
-              <MdGroups />
-              <p className="font-bold text-lg">Organizers</p>
-            </div>
-            <span>{event.organizerDetails}</span>
-          </div>
-          <div>
-            <div className="flex items-center gap-1">
-              <MdLocationOn />
-              <p className="font-bold text-lg">Venue</p>
-            </div>
-            <span>{event.venue}</span>
-          </div>
-          <div>
-            <div className="flex items-center gap-1">
-              <MdPhone />
-              <p className="font-bold text-lg">Contact</p>
-            </div>
-            <span>{event.contact}</span>
-          </div>
-          <div>
-            <div className="flex items-center gap-1">
-              <MdAppRegistration />
-              <p className="font-bold text-lg">How To Register?</p>
-            </div>
-            <span>{event.howToRegister}</span>
-          </div>
-        </div>
-        <div className="bottom-0 flex gap-6 items-center border-t border-slate-500 justify-between">
-          <div className="flex justify-start items-center mt-2 gap-6">
-            <div className="flex gap-1 items-center">
-              <FaRegHeart />
-              <span>{event.likes}</span>
-            </div>
-            <div className="flex gap-1 items-center">
-              <FaShare />
-              <span>{event.shares}</span>
-            </div>
-            <div className="flex gap-1 items-center">
-              <FaRegBookmark />
-              <span>{event.saved}</span>
-            </div>
-          </div>
-          <div className="mt-2">
-            <motion.button
-              whileHover={{
-                scale: 0.9,
-                transition: { duration: 0.2 },
-              }}
-              transition={{ duration: 0.5 }}
 
-              className="bg-gradient-to-br from-[#f9a225] to-[#f95f35] text-white rounded-md font-bold px-6 py-1 over:bg-[#faad64]"
-            >
-              <a href={link}>Participate</a>
+        <img
+          src={event.img}
+          alt="Poster"
+          className="w-full h-44 object-cover rounded-xl mt-3"
+        />
 
-            </motion.button>
-          </div>
-        </div>
+        <p className="mt-3">{event.desc}</p>
+        <p className="mt-3"><b>Venue: </b><br />{event.venue}</p>
+        <p className="mt-3"><b>Contact: </b><br />{event.contact}</p>
+        <p className="mt-3"><b>Organizers: </b><br />{event.organizer}</p>
+        <p className="mt-3"><b>How to Register?: </b><br />{event.howToRegister}</p>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 

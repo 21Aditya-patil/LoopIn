@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import logo from "/another.svg";
+import logo from "/fulllogo.png";
 
 function Loading() {
   return (

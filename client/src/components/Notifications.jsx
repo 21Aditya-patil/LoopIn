@@ -1,22 +1,28 @@
-import React from 'react'
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { notifications } from '../Data/notificationData'
+import React from "react";
+import { FaLightbulb } from "react-icons/fa";
+import collegeTips from "../Data/collegeTips";
 
-function TrendCard() {
+function Notifications() {
+  const randomTip = collegeTips[Math.floor(Math.random() * collegeTips.length)];
+
   return (
-    <div className='flex flex-col gap-6 dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 bg-[#ffffffa3] rounded-xl p-4 shadow-[#ff9a3b] dark:shadow-[#ff9a3b] dark:shadow-xsoft shadow-soft'>
-      <div className='flex items-center gap-2 font-bold border-b border-[#ff9a3b] py-2'>
-        <IoIosNotificationsOutline className='text-2xl hover:-translate-y-1 transition-all ease-in-out'/>
-        Notfications
-      </div>
-      {notifications.map((notifi, id) => {
-        return <div key={id} className='flex items-start gap-3 '>
-          <img src={notifi.img} alt="dp" className="w-8 h-8 rounded-full flex-shrink-0"/> 
-          <div className='text-sm leading-relaxed'><span className='font-semibold text-blue-600 cursor-pointer'>{notifi.username}</span> {notifi.notif}</div>         
+    <div
+      className="relative p-5 rounded-2xl overflow-hidden bg-[#ffffffa3]
+      dark:bg-gradient-to-br from-blue-900/40 via-slate-900 to-black
+      backdrop-blur-xl border border-blue-800/30
+      animate-glowPulse
+      dark:text-white text-black "
+    >
+      <div className="flex items-center gap-3 border-b border-blue-800/30 pb-3">
+        <div className="p-2 rounded-full bg-blue-600/20 text-blue-400">
+          <FaLightbulb />
         </div>
-      })}
+        <h3 className="text-lg font-semibold tracking-wide">Tip of the Day</h3>
+      </div>
+
+      <p className="mt-4 text-sm text-gray-800 dark:text-gray-300 leading-relaxed">{randomTip}</p>
     </div>
-  )
+  );
 }
 
-export default TrendCard
+export default Notifications;

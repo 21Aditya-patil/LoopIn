@@ -1,27 +1,25 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentChat } from "../reducers/chatSlice";
+import defaultAvatar from "/default-avatar.jpg"; // make sure this exists
 
-function ChatOne({ data }) {
+function ChatOne({ data, conversation }) {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(setCurrentChat(conversation));
+  };
+
   return (
-    <div className="w-full bg-[#ffffffa3] dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 rounded-lg min-h-16 border-b border-slate-900 dark:border-gray-600 p-2 flex items-start gap-3 mb-1 cursor-pointer hover:bg-slate-200 dark:hover:bg-gray-700">
+    <div
+      onClick={handleClick}
+      className="flex items-center gap-3 p-3 cursor-pointer hover:bg-slate-300  dark:hover:bg-slate-800 rounded-lg transition border-b border-slate-400"
+    >
       <img
-        src={data.profile}
-        alt="dp"
-        className="w-10 h-10 rounded-full flex-shrink-0"
+        src={data?.profilePicture || defaultAvatar}
+        alt="profile"
+        className="w-10 h-10 rounded-full"
       />
-
-      <div className="flex justify-between w-full">
-        <div className="flex flex-col text-start w-[75%] sm:w-auto">
-          <span className="font-bold text-base leading-tight">{data.name}</span>
-
-          <span className="dark:text-gray-400 text-sm leading-snug line-clamp-2">
-            {data.lastMessage}
-          </span>
-        </div>
-
-        <span className="dark:text-gray-400 text-xs whitespace-nowrap ml-2 mt-1">
-          {data.time}
-        </span>
-      </div>
+      <span className="font-semibold dark:text-white text-black">{data?.name}</span>
     </div>
   );
 }

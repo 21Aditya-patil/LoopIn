@@ -1,25 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../reducers/authSlice";
+import postReducer from "../reducers/postSlice";
+import chatReducer from "../reducers/chatSlice";
+import userReducer from "../reducers/userSlice";
+import eventReducer from "../reducers/eventSlice"
+import searchReducer from "../reducers/searchSlice";
+import themeReducer from "../reducers/themeSlice";
 
-// Load persisted state
+// Load only auth from localStorage
 function loadFromLocalStorage() {
   try {
-    const serializedStore = window.localStorage.getItem("store");
-    if (serializedStore === null) return undefined;
-    return JSON.parse(serializedStore);
+    const serializedAuth = window.localStorage.getItem("auth");
+    if (!serializedAuth) return undefined;
+
+    return {
+      auth: JSON.parse(serializedAuth),
+    };
   } catch (e) {
     console.log(e);
     return undefined;
-  }
-}
-
-// Save to localStorage
-function saveToLocalStorage(store) {
-  try {
-    const serializedStore = JSON.stringify(store);
-    window.localStorage.setItem("store", serializedStore);
-  } catch (e) {
-    console.log(e);
   }
 }
 
@@ -28,12 +27,21 @@ const persistedState = loadFromLocalStorage();
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    posts: postReducer,
+    chat: chatReducer,
+    user: userReducer,
+    events: eventReducer,
+    search: searchReducer,
+    theme: themeReducer,
   },
   preloadedState: persistedState,
   devTools: true,
 });
 
-store.subscribe(() => saveToLocalStorage(store.getState()));
+// Save only auth
+store.subscribe(() => {
+  const { auth } = store.getState();
+  window.localStorage.setItem("auth", JSON.stringify(auth));
+});
 
 export default store;
-

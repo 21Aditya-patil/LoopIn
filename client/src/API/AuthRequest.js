@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:8000";
 
 export const logIn = (formData) =>
   fetch(`${BASE_URL}/auth/login`, {
@@ -7,7 +7,13 @@ export const logIn = (formData) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  }).then((res) => res.json());
+  }).then(async (res) => {
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || "Login failed");
+    }
+    return data;
+  });
 
 export const signUp = (formData) =>
   fetch(`${BASE_URL}/auth/register`, {
@@ -16,4 +22,10 @@ export const signUp = (formData) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  }).then((res) => res.json());
+  }).then(async (res) => {
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || "Signup failed");
+    }
+    return data;
+  });

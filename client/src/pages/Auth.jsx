@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import logo from "/another.svg";
+import logo from "/fulllogo.png";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useTheme } from "../context/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, signUp, clearError, clearSignupSuccess } from "../reducers/authSlice";
+import { toggleTheme } from "../reducers/themeSlice";
 import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
 
   // ✅ updated selectors
   const { user, loading, error, isSignupSuccess } = useSelector((state) => state.auth);
-
-  const { theme, toggleTheme } = useTheme();
+  const theme = useSelector((state) => state.theme.theme);
 
   const [data, setData] = useState({
     name: "",
@@ -30,7 +29,7 @@ function Auth() {
 
   const [confirmPass, setConfirmPass] = useState(false);
 
-  // ✅ Handle successful signup - switch to login
+  // Handle successful signup - switch to login
   useEffect(() => {
     if (isSignupSuccess) {
       setIsLogin(true);
@@ -65,7 +64,7 @@ function Auth() {
       const { confirmPassword, ...userData } = data;
       dispatch(signUp(userData));
     } else {
-      dispatch(logIn(data));
+      dispatch(logIn({ username: data.username, password: data.password }));
     }
   };
 
@@ -82,7 +81,7 @@ function Auth() {
   };
 
   return (
-    <div className="relative max-h-screen w-full md:h-screen flex flex-col">
+    <div className="relative max-h-[calc(100vh-2rem)] w-full md:h-[calc(100vh-2rem)] flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-start">
         <motion.img
@@ -99,7 +98,7 @@ function Auth() {
         />
 
         <div
-          onClick={toggleTheme}
+          onClick={() => dispatch(toggleTheme())}
           className="cursor-pointer text-[#EF5757] hover:text-[#ff9a3b] text-2xl"
         >
           {theme === "light" ? <MdDarkMode /> : <MdLightMode />}

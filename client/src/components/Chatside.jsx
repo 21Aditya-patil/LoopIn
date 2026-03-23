@@ -1,22 +1,39 @@
-import React from "react";
-import page from "/pageconstruct.jpg";
-import { chatData } from "../Data/chatData";
+import React, { useEffect } from "react";
 import ChatOne from "./ChatOne";
-import { motion } from "motion/react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchConversations } from "../reducers/chatSlice";
 
 function Chatside() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const conversations = useSelector((state) => state.chat.conversations);
+
+  useEffect(() => {
+    if (user?._id) {
+      dispatch(fetchConversations(user._id));
+    }
+  }, [user, dispatch]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.4 }}
-      className="flex flex-col h-screen overflow-y-auto gap-4 pb-24 lg:pb-4 pt-16 lg:pt-0"
-    >
-      <div className="w-full h-14 text-3xl mb-0">Messages</div>
-      {chatData.map((chat, id) => {
-        return <ChatOne data={chat} key={id} />;
-      })}
-    </motion.div>
+    <div className="flex flex-col h-full overflow-hidden sm:pt-20 sm:pb-28 lg:py-2 dark:bg-slate-900 bg-[#ffffffa3] opacity-80">
+      <h2 className="text-2xl font-bold p-3 shrink-0 lg:mt-0 mt-20">Messages</h2>
+
+      <div className="flex-1 overflow-y-auto px-3">
+        {conversations.map((conversation) => {
+          const friend = conversation.members.find(
+            (m) => m._id !== user._id
+          );
+
+          return (
+            <ChatOne
+              key={conversation._id}
+              data={friend}
+              conversation={conversation}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

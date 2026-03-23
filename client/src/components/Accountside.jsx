@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
-import PostSide from "./Postside"
 import AccountCard from "./AccountCard";
+import Postshare from "./Postshare";
+import MultiPosts from "./MultiPosts";
 
 function Accountside() {
   return (
@@ -9,10 +10,11 @@ function Accountside() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className="flex flex-col h-screen overflow-y-auto gap-4 pb-24 lg:pb-4 pt-16 lg:pt-0"
+      className="flex flex-col h-full overflow-y-auto gap-4 pb-24 lg:pb-4 pt-16 lg:pt-0"
     >
       <AccountCard />
-      <PostSide />
+      <Postshare />
+      <MultiPosts isAccountPage />
     </motion.div>
   );
 }
