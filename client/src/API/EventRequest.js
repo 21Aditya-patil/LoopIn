@@ -2,7 +2,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 // ================= GET ALL EVENTS =================
 export const getEvents = async () => {
-  const response = await fetch(BASE_URL);
+  const response = await fetch(`${BASE_URL}/events`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch events");
