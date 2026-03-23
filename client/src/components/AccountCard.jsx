@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import cover from "/cover.jpg";
-import dp from "/default-avatar.jpg"
+import dp from "/default-avatar.jpg";
 import InfoModel from "./InfoModel";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, deleteUser } from "../reducers/authSlice";
@@ -107,10 +107,6 @@ function AccountCard() {
 
               {showMenu && (
                 <div className="absolute right-0 top-full mt-2 w-48 bg-[#0f172a] rounded-xl shadow-2xl border border-slate-700 z-[999] overflow-hidden text-sm">
-                  <button className="w-full text-left px-4 py-2 hover:bg-slate-800">
-                    Change Password
-                  </button>
-
                   <button
                     className="w-full text-left px-4 py-2 hover:bg-slate-800"
                     onClick={() => {
