@@ -64,13 +64,13 @@ function Postshare() {
 
       await dispatch(createPost(newPost)).unwrap();
 
-      toast.success("Post uploaded successfully 🎉");
+      toast.success("New post added");
 
       setMedia([]);
       desc.current.value = "";
       setCategory("All");
     } catch (error) {
-      toast.error("Failed to upload post ❌");
+      toast.error("Failed to upload post");
     } finally {
       setLoading(false);
     }

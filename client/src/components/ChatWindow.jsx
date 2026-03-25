@@ -96,7 +96,7 @@ function ChatWindow() {
   };
 
   return (
-    <div className="flex flex-col h-full pt-20 pb-28 lg:py-2">
+    <div className="flex flex-col h-full pt-16 pb-24 lg:pt-0 lg:pb-0 lg:py-2">
       {/* HEADER */}
       <div className="flex justify-between">
         <div className="p-3 border-b flex items-center gap-3 shrink-0">

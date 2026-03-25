@@ -13,6 +13,7 @@ import { likePost, addComment } from "../reducers/postSlice";
 import { useDispatch, useSelector } from "react-redux";
 import dp from "/default-avatar.jpg";
 import { savePost } from "../reducers/postSlice";
+import toast from "react-hot-toast";
 
 function SinglePost({ data, onEdit, onDelete, currentUserId }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -140,6 +141,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
                 <button
                   onClick={() => {
                     onDelete && onDelete(data._id);
+                    toast.success("Post is deleted");
                     setShowMenu(false);
                   }}
                   className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-200 dark:hover:bg-slate-700"
@@ -168,6 +170,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
                   updatedData: { desc: editedText },
                   userId: currentUserId,
                 });
+              toast.success("Post is updated");
               setEditMode(false);
             }}
             className="bg-blue-500 text-white px-3 rounded"
