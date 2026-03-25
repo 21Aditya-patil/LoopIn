@@ -4,6 +4,7 @@ import postReducer from "../reducers/postSlice";
 import chatReducer from "../reducers/chatSlice";
 import userReducer from "../reducers/userSlice";
 import eventReducer from "../reducers/eventSlice"
+import uploadReducer from "../reducers/uploadSlice";
 import searchReducer from "../reducers/searchSlice";
 import themeReducer from "../reducers/themeSlice";
 
@@ -31,6 +32,7 @@ const store = configureStore({
     chat: chatReducer,
     user: userReducer,
     events: eventReducer,
+    upload: uploadReducer,
     search: searchReducer,
     theme: themeReducer,
   },

@@ -46,7 +46,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
     return `${Math.floor(diff / 86400)}d`;
   };
 
-  const isSaved = data?.saved?.some((id) => id?.toString() === loggedInUserId);
+  const isSaved = data?.saved?.some((id) => id?.toString() === userId);
 
   const handleSave = () => {
     dispatch(savePost(data._id));
