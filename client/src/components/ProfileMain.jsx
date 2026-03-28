@@ -67,7 +67,7 @@ function Profile() {
   return (
     <div className="h-full overflow-y-auto px-4 py-4">
       {/* Profile Header */}
-      <div className="bg-[#0d1b2a] rounded-xl p-4 sm:p-6 mb-6">
+      <div className="dark:bg-[#0d1b2a] bg-[#ffffffa3] rounded-xl p-4 sm:p-6 mb-6">
         {/* Cover */}
         <img
           src={profileUser.coverPicture || cover}
@@ -126,21 +126,21 @@ function Profile() {
         <div className="grid grid-cols-3 text-center mt-6 gap-2">
           <div>
             <h3 className="font-bold text-base sm:text-lg">{posts.length}</h3>
-            <p className="text-gray-400 text-xs sm:text-sm">Posts</p>
+            <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">Posts</p>
           </div>
 
           <div>
             <h3 className="font-bold text-base sm:text-lg">
               {profileUser.followers?.length || 0}
             </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">Followers</p>
+            <p className="text-gray-500 dar:text-gray-400 text-xs sm:text-sm">Followers</p>
           </div>
 
           <div>
             <h3 className="font-bold text-base sm:text-lg">
               {profileUser.following?.length || 0}
             </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">Following</p>
+            <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">Following</p>
           </div>
         </div>
       </div>
