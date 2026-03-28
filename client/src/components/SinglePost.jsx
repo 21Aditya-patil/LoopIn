@@ -23,6 +23,9 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
   const [showComments, setShowComments] = useState(false);
   const [commentText, setCommentText] = useState("");
 
+  // 🔥 NEW STATE FOR IMAGE MODAL
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const menuRef = useRef();
 
   const dispatch = useDispatch();
@@ -190,7 +193,8 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               key={index}
               src={item}
               alt="post"
-              className="w-full rounded-xl aspect-video object-cover"
+              className="w-full rounded-xl aspect-video object-cover cursor-pointer"
+              onClick={() => setSelectedImage(item)}
             />
           ))}
         </div>
@@ -240,24 +244,28 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
       {/* Comment Section */}
       {showComments && (
         <div className="mt-3 flex flex-col gap-3 bg-slate-800 rounded-xl p-3">
-          {/* If No Comments */}
           {data.comments?.length === 0 && (
             <div className="text-center text-gray-400 text-sm py-2">
               No comments yet
             </div>
           )}
 
-          {/* Existing Comments */}
           {data.comments?.length > 0 &&
             data.comments.map((comment, index) => (
               <div key={index} className="flex items-start gap-2">
-                <img
-                  src={
-                    comment.userId?.profilePicture || "https://i.pravatar.cc/40"
+                <Link
+                  to={
+                    postOwnerId === loggedInUserId
+                      ? "/account"
+                      : `/profile/${postOwnerId}`
                   }
-                  alt="dp"
-                  className="w-7 h-7 rounded-full object-cover"
-                />
+                >
+                  <img
+                    src={data.userId?.profilePicture || dp}
+                    alt="dp"
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                </Link>
 
                 <div className="flex flex-col bg-slate-900 px-3 py-2 rounded-xl w-full">
                   <div className="flex items-center justify-between">
@@ -274,7 +282,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               </div>
             ))}
 
-          {/* Comment Input */}
           <div className="flex gap-2 mt-2">
             <input
               value={commentText}
@@ -289,6 +296,28 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               Post
             </button>
           </div>
+        </div>
+      )}
+
+      {/*  IMAGE MODAL */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-5 right-5 text-white text-3xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            ✕
+          </button>
+
+          <img
+            src={selectedImage}
+            alt="full"
+            className="max-h-[90%] max-w-[90%] rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </div>
