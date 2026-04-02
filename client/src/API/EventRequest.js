@@ -13,7 +13,7 @@ export const getEvents = async () => {
 
 // ================= CREATE EVENT =================
 export const createEventApi = async (eventData, token) => {
-  const response = await fetch(`${BASE_URL}/create`, {
+  const response = await fetch(`${BASE_URL}/events/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,29 +31,9 @@ export const createEventApi = async (eventData, token) => {
   return data;
 };
 
-// ================= UPDATE EVENT =================
-export const updateEventApi = async (id, eventData, token) => {
-  const response = await fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(eventData),
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Failed to update event");
-  }
-
-  return data;
-};
-
 // ================= DELETE EVENT =================
 export const deleteEventApi = async (id, token) => {
-  const response = await fetch(`${BASE_URL}/${id}`, {
+  const response = await fetch(`${BASE_URL}/events/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
