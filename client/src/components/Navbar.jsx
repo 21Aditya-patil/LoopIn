@@ -73,7 +73,7 @@ function Navbar() {
                   <img
                     src={item.profilePicture || dp}
                     alt="dp"
-                    className="w-6 h-6 rounded-full object-cover"
+                    className="w-6 h-6 rounded-full aspect-square object-cover"
                   />
                 </Link>
 

@@ -79,7 +79,7 @@ function Postshare() {
   return (
     <div className="flex gap-4 dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900 bg-[#ffffffa3] p-4 rounded-2xl dark:shadow-xsoft shadow-soft">
       {/* Profile Image */}
-      <img src={user.profilePicture || dp} alt="dp" className="w-10 h-10 rounded-full" />
+      <img src={user.profilePicture || dp} alt="dp" className="w-10 h-10 rounded-full aspect-square object-cover" />
 
       <div className="flex w-full flex-col">
         {/* Input */}

@@ -92,7 +92,7 @@ function MobileNav() {
                 >
                   <img
                     src={item.profilePicture || dp}
-                    className="w-10 h-10 rounded-full object-cover"
+                    className="w-10 h-10 rounded-full aspect-square object-cover"
                   />
 
                   <div>
@@ -159,7 +159,7 @@ function MobileNav() {
             <img
               src={user?.profilePicture || dp}
               alt="account-image"
-              className="w-8 h-8 rounded-full border-2 border-[#EF5757]"
+              className="w-8 h-8 rounded-full aspect-square object-cover border-2 border-[#EF5757]"
             />
           </NavLink>
 

@@ -17,7 +17,7 @@ function ChatOne({ data, conversation }) {
       <img
         src={data?.profilePicture || defaultAvatar}
         alt="profile"
-        className="w-10 h-10 rounded-full"
+        className="w-10 h-10 rounded-full aspect-square object-cover"
       />
       <span className="font-semibold dark:text-white text-black">{data?.name}</span>
     </div>

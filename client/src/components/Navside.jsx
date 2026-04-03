@@ -56,7 +56,7 @@ function Navside() {
           }
         >
           <div className="border border-[#EF5757]  rounded-full">
-            <img src={user?.profilePicture || dp} alt="account-image" className="w-8 h-8 rounded-full"/>
+            <img src={user?.profilePicture || dp} alt="account-image" className="w-8 h-8 rounded-full aspect-square object-cover"/>
           </div>
         </NavLink>
 

@@ -106,28 +106,34 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
             <img
               src={data.userId?.profilePicture || dp}
               alt="dp"
-              className="w-8 h-8 rounded-full object-cover"
+              className="w-8 h-8 rounded-full aspect-square object-cover"
             />
           </Link>
 
-          <div className="flex items-center gap-2">
-            <Link
-              to={
-                postOwnerId === loggedInUserId
-                  ? "/account"
-                  : `/profile/${postOwnerId}`
-              }
-              className="font-semibold hover:underline cursor-pointer"
-            >
-              {data.userId?.name}
-            </Link>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Link
+                to={
+                  postOwnerId === loggedInUserId
+                    ? "/account"
+                    : `/profile/${postOwnerId}`
+                }
+                className="font-semibold hover:underline cursor-pointer"
+              >
+                {data.userId?.name}
+              </Link>
 
-            {/* ROLE LABEL */}  
-            {data.userId?.role && (
-              <span className="text-xs bg-orange-500 text-white px-2 py-0.5 rounded-full">
-                {data.userId?.role}
-              </span>
-            )}
+              {/* ROLE LABEL */}  
+              {data.userId?.role && (
+                <span className="text-xs bg-orange-500 text-white px-2 py-0.5 rounded-full">
+                  {data.userId?.role}
+                </span>
+              )}
+            </div>
+            {/* POST TIME */}
+            <span className="text-xs text-gray-400">
+              {formatTime(data.createdAt)} ago
+            </span>
           </div>
         </div>
 
@@ -197,15 +203,26 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
       {/* Media */}
       {data.media?.length > 0 && (
         <div className="grid gap-3">
-          {data.media.map((item, index) => (
-            <img
-              key={index}
-              src={item}
-              alt="post"
-              className="w-full rounded-xl aspect-video object-cover cursor-pointer"
-              onClick={() => setSelectedImage(item)}
-            />
-          ))}
+          {data.media.map((item, index) => {
+            const isVideo = item.includes(".mp4") || item.includes(".webm") || item.includes(".mov") || item.includes("video");
+            
+            return isVideo ? (
+              <video
+                key={index}
+                src={item}
+                controls
+                className="w-full rounded-xl aspect-video object-cover cursor-pointer"
+              />
+            ) : (
+              <img
+                key={index}
+                src={item}
+                alt="post"
+                className="w-full rounded-xl aspect-video object-cover cursor-pointer"
+                onClick={() => setSelectedImage(item)}
+              />
+            );
+          })}
         </div>
       )}
 
@@ -270,7 +287,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
                   <img
                     src={data.userId?.profilePicture || dp}
                     alt="dp"
-                    className="w-8 h-8 rounded-full object-cover"
+                    className="w-8 h-8 rounded-full aspect-square object-cover"
                   />
                 </Link>
 

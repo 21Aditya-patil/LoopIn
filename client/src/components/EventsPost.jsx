@@ -42,7 +42,7 @@ function EventsPost({ event, isAdmin, onDelete }) {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="text-sm mt-2 text-slate-300">
+          <p className="text-sm mt-2 text-slate-300 line-clamp-3">
             {event.desc}
           </p>
 
@@ -68,7 +68,11 @@ function EventsPost({ event, isAdmin, onDelete }) {
                 whileHover={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
                 className="bg-red-500 text-white rounded-lg font-bold py-2 w-full"
-                onClick={() => onDelete(event._id)}
+                onClick={() => {
+                  if (window.confirm("Are you sure you want to delete this event?")) {
+                    onDelete(event._id);
+                  }
+                }}
               >
                 Delete Event
               </motion.button>

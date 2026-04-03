@@ -104,7 +104,7 @@ function ChatWindow() {
             <img
               src={receiver?.profilePicture || dp}
               alt="dp"
-              className="w-8 h-8 rounded-full"
+              className="w-8 h-8 rounded-full aspect-square object-cover"
             />
           </Link>
 

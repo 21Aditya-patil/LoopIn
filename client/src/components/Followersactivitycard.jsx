@@ -67,7 +67,7 @@ function Followersactivitycard() {
             <img
               src={person.profilePicture || dp}
               alt="dp"
-              className="w-8 h-8 rounded-full object-cover"
+              className="w-8 h-8 rounded-full aspect-square object-cover"
             />
             <div className="flex flex-col items-start justify-center">
               <span className="font-bold">{person.name}</span>
