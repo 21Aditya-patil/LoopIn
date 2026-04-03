@@ -23,7 +23,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
   const [showComments, setShowComments] = useState(false);
   const [commentText, setCommentText] = useState("");
 
-  // 🔥 NEW STATE FOR IMAGE MODAL
   const [selectedImage, setSelectedImage] = useState(null);
 
   const menuRef = useRef();
@@ -32,6 +31,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
   const user = useSelector((state) => state.auth.user);
 
   const userId = user?._id;
+
 
   const isLiked = data?.likes?.some((id) => id?.toString() === userId);
 
@@ -69,7 +69,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
     setCommentText("");
   };
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -110,16 +109,26 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               className="w-8 h-8 rounded-full object-cover"
             />
           </Link>
-          <Link
-            to={
-              postOwnerId === loggedInUserId
-                ? "/account"
-                : `/profile/${postOwnerId}`
-            }
-            className="font-semibold hover:underline cursor-pointer"
-          >
-            {data.userId?.name}
-          </Link>
+
+          <div className="flex items-center gap-2">
+            <Link
+              to={
+                postOwnerId === loggedInUserId
+                  ? "/account"
+                  : `/profile/${postOwnerId}`
+              }
+              className="font-semibold hover:underline cursor-pointer"
+            >
+              {data.userId?.name}
+            </Link>
+
+            {/* ROLE LABEL */}  
+            {data.userId?.role && (
+              <span className="text-xs bg-orange-500 text-white px-2 py-0.5 rounded-full">
+                {data.userId?.role}
+              </span>
+            )}
+          </div>
         </div>
 
         {isOwner && (
@@ -202,7 +211,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
 
       {/* Actions */}
       <div className="flex gap-4 items-center">
-        {/* Like */}
         <div
           className="flex gap-1 items-center cursor-pointer"
           onClick={handleLike}
@@ -215,7 +223,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
           <span>{data.likes?.length || 0}</span>
         </div>
 
-        {/* Comment */}
         <div
           className="flex gap-1 items-center cursor-pointer"
           onClick={() => setShowComments(!showComments)}
@@ -299,7 +306,6 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
         </div>
       )}
 
-      {/*  IMAGE MODAL */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"

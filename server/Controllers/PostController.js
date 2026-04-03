@@ -4,8 +4,8 @@ import UserModel from "../Models/userModel.js";
 
 // Common Populate Config (Reusable)
 const populateOptions = [
-  { path: "userId", select: "name profilePicture" },
-  { path: "comments.userId", select: "name profilePicture" },
+  { path: "userId", select: "name profilePicture role" },
+  { path: "comments.userId", select: "name profilePicture role" },
 ];
 
 

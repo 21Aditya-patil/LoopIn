@@ -27,7 +27,6 @@ function ChatWindow() {
     dispatch(deleteConversation(currentChat._id));
   };
 
-  // Connect socket once
   useEffect(() => {
     if (!currentUser?._id) return;
 
@@ -39,18 +38,16 @@ function ChatWindow() {
     };
   }, [currentUser]);
 
-  // Fetch messages when chat changes
   useEffect(() => {
     if (currentChat?._id) {
       dispatch(fetchMessages(currentChat._id));
     }
   }, [currentChat, dispatch]);
 
-  // Listen for incoming messages
   useEffect(() => {
     socket.on("getMessage", (data) => {
       dispatch(addMessageRealtime(data));
-      dispatch(moveConversationToTop(data.conversationId)); // move instantly
+      dispatch(moveConversationToTop(data.conversationId));
     });
 
     return () => {
@@ -58,7 +55,6 @@ function ChatWindow() {
     };
   }, [dispatch]);
 
-  // Auto scroll
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -78,13 +74,9 @@ function ChatWindow() {
       text: newMessage,
     };
 
-    // Save to DB
     dispatch(sendMessage(messageData));
-
-    // Move conversation instantly
     dispatch(moveConversationToTop(currentChat._id));
 
-    // Emit real-time message
     socket.emit("sendMessage", {
       senderId: currentUser._id,
       receiverId: receiver._id,
@@ -96,7 +88,8 @@ function ChatWindow() {
   };
 
   return (
-    <div className="flex flex-col h-full pt-16 pb-24 lg:pt-0 lg:pb-0 lg:py-2">
+    <div className="flex flex-col h-full min-h-0 overflow-hidden box-border pt-16 pb-24 lg:pt-0 lg:pb-0 lg:py-2">
+      
       {/* HEADER */}
       <div className="flex justify-between">
         <div className="p-3 border-b flex items-center gap-3 shrink-0">
@@ -107,14 +100,19 @@ function ChatWindow() {
             <IoMdArrowBack />
           </button>
 
-          <Link to={`/profile/${receiver._id}`}><img
-            src={receiver?.profilePicture || dp}
-            alt="dp"
-            className="w-8 h-8 rounded-full"
-          /></Link>
+          <Link to={`/profile/${receiver._id}`}>
+            <img
+              src={receiver?.profilePicture || dp}
+              alt="dp"
+              className="w-8 h-8 rounded-full"
+            />
+          </Link>
 
-          <Link to={`/profile/${receiver._id}`}><span className="font-semibold">{receiver?.name || "Chat"}</span></Link>
+          <Link to={`/profile/${receiver._id}`}>
+            <span className="font-semibold">{receiver?.name || "Chat"}</span>
+          </Link>
         </div>
+
         <button onClick={handleDelete} className="text-orange-500 text-2xl">
           <MdDelete />
         </button>

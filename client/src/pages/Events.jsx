@@ -10,7 +10,7 @@ function Events() {
     <div className='relative lg:overflow-hidden lg:h-[calc(100vh-2rem)] lg:grid lg:grid-cols-[18rem_auto_20rem] gap-4 min-h-[calc(100vh-2rem)] items-stretch'>
       <Userside />
       <MobileNav />
-      <EventSide />
+      <EventSide withScroll={true} />
       <Navside />
     </div>
   )

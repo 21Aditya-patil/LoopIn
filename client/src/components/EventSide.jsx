@@ -6,7 +6,7 @@ import { fetchEvents, deleteEvent, createEvent } from "../reducers/eventSlice";
 import CreateEventModal from "./CreateEventModal";
 import { AnimatePresence } from "motion/react";
 
-function EventSide() {
+function EventSide({ withScroll = false }) {
   const dispatch = useDispatch();
   const { events, loading, error } = useSelector((state) => state.events);
   const user = useSelector((state) => state.auth.user);
@@ -23,7 +23,7 @@ function EventSide() {
   };
 
   return (
-    <div className="relative h-full">
+    <div className={`relative ${withScroll ? "h-full overflow-y-auto" : "h-full"}`}>
       <div className="mt-16 lg:mt-0 p-2 flex justify-center dark:bg-gradient-to-br from-slate-800 via-slate-900 to-neutral-900
     bg-[#ffffffa3] rounded-xl mb-4 font-bold"><h1 className="text-3xl">Events</h1></div>
       {/* EVENTS GRID */}
@@ -31,11 +31,11 @@ function EventSide() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-24  lg:pt-0 min-h-full lg:h-full lg:overflow-y-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-24 lg:pt-0 min-h-full"
       >
         {loading && <p>Loading events...</p>}
         {error && <p className="text-red-500">{error}</p>}
-        
+
 
         {events.map((event) => (
           <EventsPost

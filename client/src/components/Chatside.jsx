@@ -15,10 +15,10 @@ function Chatside() {
   }, [user, dispatch]);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden pt-16 pb-24 lg:pt-0 lg:pb-0 lg:py-2 dark:bg-slate-900 bg-[#ffffffa3] opacity-80">
+    <div className="flex flex-col h-full min-h-0 overflow-hidden box-border pt-16 pb-24 lg:pt-0 lg:pb-0 lg:py-2 dark:bg-slate-900 bg-[#ffffffa3] opacity-80">
       <h2 className="text-2xl font-bold p-3 shrink-0">Messages</h2>
 
-      <div className="flex-1 overflow-y-auto px-3">
+      <div className="flex-1 overflow-y-auto px-3 box-border">
         {conversations.map((conversation) => {
           const friend = conversation.members.find(
             (m) => m._id !== user._id

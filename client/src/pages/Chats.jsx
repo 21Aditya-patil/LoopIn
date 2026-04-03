@@ -21,12 +21,12 @@ function Chats() {
       <div className="flex flex-col flex-1 lg:grid lg:grid-cols-2 h-full overflow-hidden rounded-xl mx-2 min-h-0">
 
         {/* CHAT LIST */}
-        <div className={`${currentChat ? "hidden lg:block" : "block"} h-full`}>
+        <div className={`${currentChat ? "hidden lg:block" : "block"} h-full min-h-0`}>
           <Chatside />
         </div>
 
         {/* CHAT WINDOW */}
-        <div className={`${currentChat ? "block" : "hidden lg:block"} h-full`}>
+        <div className={`${currentChat ? "block" : "hidden lg:block"} h-full min-h-0`}>
           {currentChat ? (
             <ChatWindow />
           ) : (

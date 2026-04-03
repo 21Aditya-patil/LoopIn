@@ -60,10 +60,9 @@ export const updateUser = createAsyncThunk(
 // ================= DELETE USER =================
 export const deleteUser = createAsyncThunk(
   "auth/deleteUser",
-  async ({ userId }, thunkAPI) => {
+  async ({ userId, data }, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.token;
-      const response = await DeleteUserApi.deleteUser(userId, token);
+      const response = await DeleteUserApi.deleteUser(userId, data);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -74,7 +73,7 @@ export const deleteUser = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: storedUser, // ✅ safe now
+    user: storedUser, 
     token: storedToken || null,
     loading: false,
     error: null,
