@@ -1,5 +1,7 @@
 import UserModel from "../Models/userModel.js";
 import PostModel from "../Models/postModel.js";
+import ConversationModel from "../Models/conversationModel.js";
+import MessageModel from "../Models/messageModel.js";
 import bcrypt from "bcrypt";
 
 // Get All Users (for chat sidebar)
@@ -62,7 +64,45 @@ export const deleteUser = async (req, res) => {
 
   if (id === currentUserId || currentUserAdminStatus) {
     try {
+      // Delete all posts by the user
       await PostModel.deleteMany({ userId: id });
+
+      // Delete all comments by the user from other posts
+      await PostModel.updateMany(
+        { "comments.userId": id },
+        { $pull: { comments: { userId: id } } }
+      );
+
+      // Delete all conversations involving the user
+      await ConversationModel.deleteMany({ members: id });
+
+      // Delete all messages sent by the user
+      await MessageModel.deleteMany({ sender: id });
+
+      // Remove user from followers/following lists
+      await UserModel.updateMany(
+        { followers: id },
+        { $pull: { followers: id } }
+      );
+      await UserModel.updateMany(
+        { following: id },
+        { $pull: { following: id } }
+      );
+
+      // Remove likes and saved posts from the user
+      await PostModel.updateMany(
+        { likes: id },
+        { $pull: { likes: id } }
+      );
+      await PostModel.updateMany(
+        { saved: id },
+        { $pull: { saved: id } }
+      );
+
+      // Clear all tokens for the user
+      await UserModel.findByIdAndUpdate(id, { tokens: [] });
+
+      // Delete the user
       const user = await UserModel.findByIdAndDelete(id);
       res.status(200).json("User Deleted Successfully!");
     } catch (error) {

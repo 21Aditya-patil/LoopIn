@@ -36,6 +36,7 @@ const UserSchema = mongoose.Schema(
     following: [],
     saved: [],
     posts: [],
+    tokens: [],
   },
   { timestamps: true },
 );
