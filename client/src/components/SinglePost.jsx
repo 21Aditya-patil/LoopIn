@@ -267,7 +267,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
 
       {/* Comment Section */}
       {showComments && (
-        <div className="mt-3 flex flex-col gap-3 bg-slate-800 rounded-xl p-3">
+        <div className="mt-3 flex flex-col gap-3 bg-[#ffffffa3] dark:bg-slate-800 rounded-xl p-3">
           {data.comments?.length === 0 && (
             <div className="text-center text-gray-400 text-sm py-2">
               No comments yet
@@ -279,29 +279,36 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               <div key={index} className="flex items-start gap-2">
                 <Link
                   to={
-                    postOwnerId === loggedInUserId
+                    comment.userId?._id === loggedInUserId
                       ? "/account"
-                      : `/profile/${postOwnerId}`
+                      : `/profile/${comment.userId?._id}`
                   }
                 >
                   <img
-                    src={data.userId?.profilePicture || dp}
+                    src={comment.userId?.profilePicture || dp}
                     alt="dp"
-                    className="w-8 h-8 rounded-full aspect-square object-cover"
+                    className="w-8 h-8 rounded-full aspect-square object-cover cursor-pointer"
                   />
                 </Link>
 
-                <div className="flex flex-col bg-slate-900 px-3 py-2 rounded-xl w-full">
+                <div className="flex flex-col bg-gray-100 dark:bg-slate-700 px-3 py-2 rounded-xl w-full">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-white text-sm">
+                    <Link
+                      to={
+                        comment.userId?._id === loggedInUserId
+                          ? "/account"
+                          : `/profile/${comment.userId?._id}`
+                      }
+                      className="font-semibold text-gray-900 dark:text-white text-sm hover:underline cursor-pointer"
+                    >
                       {comment.userId?.name || "User"}
-                    </span>
-                    <span className="text-xs text-gray-400">
+                    </Link>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       {formatTime(comment.createdAt)} ago
                     </span>
                   </div>
 
-                  <span className="text-gray-300 text-sm">{comment.text}</span>
+                  <span className="text-gray-800 dark:text-gray-300 text-sm">{comment.text}</span>
                 </div>
               </div>
             ))}
@@ -311,7 +318,7 @@ function SinglePost({ data, onEdit, onDelete, currentUserId }) {
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write a comment..."
-              className="flex-1 p-2 rounded bg-slate-700 text-white text-sm outline-none"
+              className="flex-1 p-2 rounded bg-slate-200 text-black dark:bg-slate-700 dark:text-white text-sm outline-none"
             />
             <button
               onClick={handleComment}

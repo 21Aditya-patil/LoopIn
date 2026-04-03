@@ -120,7 +120,11 @@ export const getSuggestions = async (req, res) => {
   try {
     const currentUser = await UserModel.findById(userId);
 
-    const excludedIds = [currentUser._id, ...currentUser.following];
+    if (!currentUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const excludedIds = [currentUser._id, ...(currentUser.following || [])];
 
     const suggestions = await UserModel.aggregate([
       {
@@ -133,14 +137,19 @@ export const getSuggestions = async (req, res) => {
       },
       {
         $project: {
-          password: 0,
+          _id: 1,
+          name: 1,
+          username: 1,
+          profilePicture: 1,
+          role: 1,
         },
       },
     ]);
 
     res.status(200).json(suggestions);
   } catch (error) {
-    res.status(500).json(error);
+    console.error("getSuggestions error:", error);
+    res.status(500).json({ message: error.message || "Server error" });
   }
 };
 

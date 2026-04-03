@@ -27,10 +27,16 @@ function Followersactivitycard() {
         `${BASE_URL}/user/suggestions/${user._id}`
       );
 
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
+
       const data = await res.json();
-      setSuggestions(data);
+      // Ensure data is an array
+      setSuggestions(Array.isArray(data) ? data : data.suggestions || []);
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching suggestions:", err);
+      setSuggestions([]);
     } finally {
       setLoading(false);
     }
