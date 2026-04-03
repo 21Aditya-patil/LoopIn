@@ -105,7 +105,7 @@ function Profile() {
                 onClick={handleFollow}
                 className={`w-full sm:w-auto px-4 py-2 rounded-lg font-semibold transition ${
                   isFollowing
-                    ? "bg-gray-600 hover:bg-gray-700"
+                    ? "bg-gray-300 text-black dark:text-white dar:bg-gray-600 hover:bg-gray-700"
                     : "bg-orange-500 hover:bg-orange-600"
                 }`}
               >

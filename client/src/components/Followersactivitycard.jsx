@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { followUserThunk } from "../reducers/userSlice";
 import dp from "/default-avatar.jpg";
 
@@ -64,13 +65,30 @@ function Followersactivitycard() {
           className="flex items-center justify-between"
         >
           <div className="flex gap-2 items-center">
-            <img
-              src={person.profilePicture || dp}
-              alt="dp"
-              className="w-8 h-8 rounded-full aspect-square object-cover"
-            />
+            <Link
+              to={
+                person._id === user?._id
+                  ? "/account"
+                  : `/profile/${person._id}`
+              }
+            >
+              <img
+                src={person.profilePicture || dp}
+                alt="dp"
+                className="w-8 h-8 rounded-full aspect-square object-cover cursor-pointer"
+              />
+            </Link>
             <div className="flex flex-col items-start justify-center">
-              <span className="font-bold">{person.name}</span>
+              <Link
+                to={
+                  person._id === user?._id
+                    ? "/account"
+                    : `/profile/${person._id}`
+                }
+                className="font-bold hover:underline cursor-pointer"
+              >
+                {person.name}
+              </Link>
               <span className="text-gray-400 text-xs">
                 @{person.username}
               </span>
