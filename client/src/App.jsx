@@ -6,24 +6,37 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Chats from "./pages/Chats";
 import Account from "./pages/Account";
-import Profile from "./pages/Profile"
+import Profile from "./pages/Profile";
 import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
 import Auth from "./pages/Auth";
 import { useSelector } from "react-redux";
 
 function App() {
+  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
   const user = useSelector((state) => state.auth.user);
   const theme = useSelector((state) => state.theme.theme);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    const wakeServer = async () => {
+      try {
+        await fetch(`${BASE_URL}/health`);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return () => clearTimeout(timer);
-  }, []);
+    wakeServer();
+
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 30000);
+
+    return () => clearTimeout(timeout);
+  }, [BASE_URL]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -40,7 +53,6 @@ function App() {
         <Loading />
       ) : (
         <div className="relative min-h-screen dark:bg-[#121212] bg-[#f3f3f3] overflow-x-hidden dark:text-white">
-
           {/* Background Glow Layer */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
@@ -70,7 +82,9 @@ function App() {
             <Routes>
               <Route
                 path="/"
-                element={user ? <Navigate to="/home" /> : <Navigate to="/auth" />}
+                element={
+                  user ? <Navigate to="/home" /> : <Navigate to="/auth" />
+                }
               />
 
               <Route
@@ -99,7 +113,6 @@ function App() {
                 path="/profile/:id"
                 element={user ? <Profile /> : <Navigate to="/auth" />}
               />
-
             </Routes>
           </div>
         </div>
