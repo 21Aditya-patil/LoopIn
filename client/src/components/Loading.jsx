@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import logo from "/fulllogo.png";
 
-function Loading() {
+function Loading({ serverStarting }) {
   return (
     <div className="w-full h-screen overflow-hidden flex justify-center items-center bg-[#f3f3f3] dark:bg-black relative">
       
@@ -62,6 +62,22 @@ function Loading() {
           rotate: { repeat: Infinity, duration: 3.5, ease: "easeInOut" },
         }}
       />
+
+      {serverStarting && (
+        <motion.div
+          className="absolute bottom-[18%] px-6 text-center"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <p className="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100">
+            Server is waking up. Please wait a few seconds...
+          </p>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2">
+            LoopIn will open as soon as the backend is ready.
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -17,14 +17,21 @@ function App() {
   const user = useSelector((state) => state.auth.user);
   const theme = useSelector((state) => state.theme.theme);
   const [loading, setLoading] = useState(true);
+  const [serverStarting, setServerStarting] = useState(false);
 
   useEffect(() => {
+    const coldStartTimer = setTimeout(() => {
+      setServerStarting(true);
+    }, 4000);
+
     const wakeServer = async () => {
       try {
         await fetch(`${BASE_URL}/health`);
       } catch (error) {
         console.log(error);
       } finally {
+        clearTimeout(coldStartTimer);
+        setServerStarting(false);
         setLoading(false);
       }
     };
@@ -32,10 +39,15 @@ function App() {
     wakeServer();
 
     const timeout = setTimeout(() => {
+      clearTimeout(coldStartTimer);
+      setServerStarting(false);
       setLoading(false);
     }, 30000);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(coldStartTimer);
+      clearTimeout(timeout);
+    };
   }, [BASE_URL]);
 
   useEffect(() => {
@@ -50,7 +62,7 @@ function App() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading serverStarting={serverStarting} />
       ) : (
         <div className="relative min-h-screen dark:bg-[#121212] bg-[#f3f3f3] overflow-x-hidden dark:text-white">
           {/* Background Glow Layer */}
